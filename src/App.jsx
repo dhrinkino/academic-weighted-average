@@ -121,13 +121,13 @@ class App extends Component {
               </select>
         </div>
         <div className="flex justify-center py-2">
-          Počet kreditov <input type="number" className="rounded-xl" id="weight_input" onChange={this.WeightInputHandler}/>
+          <span className="px-2">Weight</span> <input type="number" className="rounded-xl" id="weight_input" onChange={this.WeightInputHandler}/>
         </div>
         <div className="flex justify-center py-2">
-          <button onClick={this.submitHandler}>Pridat znamku</button>
+          <button className="text-2xl rounded-xl border-4 border-black p-2" onClick={this.submitHandler}>Add Grade</button>
         </div>
         <div className="flex justify-center text-5xl py-5">
-        {this.calcAverage()}
+          {this.calcAverage()}
         </div>
       </div>
         
