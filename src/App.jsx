@@ -100,27 +100,45 @@ class App extends Component {
       return this.state.grades.map(
        (obj) => 
        <p key={obj.name+obj.grade}>
-         {obj.name} {this.convertToLetter(obj.grade)} <button onClick={() => this.removeByID(obj.id)}>Zmazat</button>
+         {obj.name} {this.convertToLetter(obj.grade)}  
+         <button className="px-1 text-red-500" onClick={() => this.removeByID(obj.id)}>X</button>
        </p>
       )
    }
   render() { 
     return ( 
-    <div>
-      <input type="text" name="" id="name_input" onChange={this.NameInputHandler} />
-      <select name="" id="grades_input" onChange={this.GradeInputHandler}>
-        <option value='1' default>A</option>
-        <option value='1.5'>B</option>
-        <option value='2'>C</option>
-        <option value='2.5'>D</option>
-        <option value='3'>E</option>
-        <option value='4'>FX</option>
-      </select>
-      <input type="number" name="" id="weight_input" onChange={this.WeightInputHandler}/>
-      <button onClick={this.submitHandler}>Pridat znamku</button>
-      {this.printGrades() }<br/>
-      {this.calcAverage()}
-
+    <div className="min-h-screen bg-gradient-to-tl from-slate-50 to-slate-100">
+      <div className="flex h-screen justify-center items-center">
+      <div class="grid grid-cols-1">
+        <div className="flex justify-center py-10">
+          <ul>
+              {this.printGrades() }
+          </ul>
+        </div>
+        <div className="flex justify-center">
+          <input type="text" name="" id="name_input" onChange={this.NameInputHandler} />
+              <select name="" id="grades_input" onChange={this.GradeInputHandler}>
+                <option value='1' default>A</option>
+                <option value='1.5'>B</option>
+                <option value='2'>C</option>
+                <option value='2.5'>D</option>
+                <option value='3'>E</option>
+                <option value='4'>FX</option>
+              </select>
+        </div>
+        <div className="flex justify-center py-2">
+          <input type="number" name="" id="weight_input" onChange={this.WeightInputHandler}/>
+        </div>
+        <div className="flex justify-center py-2">
+          <button onClick={this.submitHandler}>Pridat znamku</button>
+        </div>
+        <div className="flex justify-center text-5xl py-5">
+        {this.calcAverage()}
+        </div>
+      </div>
+        
+        
+      </div>
     </div>
     );
   }
