@@ -66,7 +66,7 @@ class App extends Component {
         weight = parseFloat(weight) + parseFloat(obj.weight);
         }
       )
-    return w_grade / weight;
+    return (w_grade / weight).toFixed(2);
    }
 
    saveToLocalStorage = (new_state) => {
