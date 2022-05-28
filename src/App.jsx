@@ -110,7 +110,7 @@ class App extends Component {
           </ul>
         </div>
         <div className="flex justify-center">
-          <input type="text" className="rounded-xl" id="name_input" onChange={this.NameInputHandler} />
+          <input type="text" className="text-center rounded-xl" id="name_input" onChange={this.NameInputHandler} />
               <select className="rounded-xl" id="grades_input" onChange={this.GradeInputHandler}>
                 <option value='1' default>A</option>
                 <option value='1.5'>B</option>
@@ -121,7 +121,7 @@ class App extends Component {
               </select>
         </div>
         <div className="flex justify-center py-2">
-          <span className="px-2">Weight</span> <input type="number" className="rounded-xl" id="weight_input" onChange={this.WeightInputHandler}/>
+          <span className="px-2">Weight</span> <input type="number" className="text-center rounded-xl" id="weight_input" onChange={this.WeightInputHandler}/>
         </div>
         <div className="flex justify-center py-2">
           <button className="text-2xl rounded-xl border-4 border-black p-2" onClick={this.submitHandler}>Add Grade</button>
