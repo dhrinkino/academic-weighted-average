@@ -29,8 +29,6 @@ class App extends Component {
       });
       this.saveToLocalStorage(new_state)
       this.setState({ cur_name: '' });
-    } else {
-      console.log('jejda')
     }
    }
 
@@ -54,19 +52,17 @@ class App extends Component {
    componentDidMount = () => {
       // load data from localstorage
       var fetched_grades = JSON.parse(localStorage.getItem("grades") || "[]");
-      console.log(fetched_grades)
       this.setState({ grades: fetched_grades  });
    }
 
    calcAverage = () => {
      if (this.state.grades.length < 1){
-       return 'NaN';
+       return '';
      }
      var w_grade = 0;
      var weight = 0;
      this.state.grades.map(obj => {
         w_grade = parseFloat(w_grade) + (parseFloat(obj.grade) * parseFloat(obj.weight) );
-        console.log()
         weight = parseFloat(weight) + parseFloat(obj.weight);
         }
       )
@@ -74,13 +70,11 @@ class App extends Component {
    }
 
    saveToLocalStorage = (new_state) => {
-    console.log(new_state);
     localStorage.clear()
     localStorage.setItem('grades', JSON.stringify(new_state))
    }
 
    removeByID = (id) => {
-     console.log(id)
      var grades = this.state.grades;
      grades = grades.filter(el => el.id !== id)
      this.setState({ grades: grades });
@@ -99,7 +93,7 @@ class App extends Component {
      
       return this.state.grades.map(
        (obj) => 
-       <p key={obj.name+obj.grade}>
+       <p key={obj.name+obj.grade} className='text-xl'>
          {obj.name} {this.convertToLetter(obj.grade)}  
          <button className="px-1 text-red-500" onClick={() => this.removeByID(obj.id)}>X</button>
        </p>
@@ -109,15 +103,15 @@ class App extends Component {
     return ( 
     <div className="min-h-screen bg-gradient-to-tl from-slate-50 to-slate-100">
       <div className="flex h-screen justify-center items-center">
-      <div class="grid grid-cols-1">
+      <div className="grid grid-cols-1">
         <div className="flex justify-center py-10">
           <ul>
               {this.printGrades() }
           </ul>
         </div>
         <div className="flex justify-center">
-          <input type="text" name="" id="name_input" onChange={this.NameInputHandler} />
-              <select name="" id="grades_input" onChange={this.GradeInputHandler}>
+          <input type="text" className="rounded-xl" id="name_input" onChange={this.NameInputHandler} />
+              <select className="rounded-xl" id="grades_input" onChange={this.GradeInputHandler}>
                 <option value='1' default>A</option>
                 <option value='1.5'>B</option>
                 <option value='2'>C</option>
@@ -127,7 +121,7 @@ class App extends Component {
               </select>
         </div>
         <div className="flex justify-center py-2">
-          <input type="number" name="" id="weight_input" onChange={this.WeightInputHandler}/>
+          Počet kreditov <input type="number" className="rounded-xl" id="weight_input" onChange={this.WeightInputHandler}/>
         </div>
         <div className="flex justify-center py-2">
           <button onClick={this.submitHandler}>Pridat znamku</button>
