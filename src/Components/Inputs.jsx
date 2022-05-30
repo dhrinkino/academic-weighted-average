@@ -31,7 +31,7 @@ class Inputs extends Component {
          this.setState({cur_weight: e.target.value})
         } else {
             alert('You cannot have negative or zero weight of grade');
-            this.refs.weight_input.value = 1;
+            this.refs.weight_input.value = null;
         }
     }
 
@@ -51,6 +51,7 @@ class Inputs extends Component {
         if (this.state.cur_name != ''){
             this.setState({ cur_name: '' });
             this.refs.name_input.value = '';
+            this.refs.weight_input.value = null;
             var new_id = this.generateFreeID();
             var grades = [...this.state.grades, {'id': new_id, 'name': this.state.cur_name, 'grade': this.state.cur_grade, 'weight': this.state.cur_weight}]
             this.setState({ grades: grades });
