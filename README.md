@@ -17,7 +17,7 @@ Licensed under MIT license
 ## Production build
 
 ```sh
-    npm run production
+    npm run build
 ```
 
 Feel free to report any bugs or new features :)
