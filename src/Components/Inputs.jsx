@@ -36,8 +36,14 @@ class Inputs extends Component {
     }
 
     generateFreeID = () => {
-        // yes this is very dirty method, but i need temporary UID
-       return Math.floor(Math.random() * Date.now())
+        var id = 0;
+        this.state.grades.every((grade) => {
+            if (id === grade.id) {
+                id = grade.id + 1;
+                return true;
+            }
+        });
+        return id;
     }
 
     submitHandler = (e) => {
