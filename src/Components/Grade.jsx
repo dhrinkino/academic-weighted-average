@@ -47,7 +47,6 @@ class Grade extends Component {
       removeByID = (id) => {
         var grades = this.state.grades;
         grades = grades.filter(el => el.id !== id)
-        console.log(grades)
         this.setState({ grades: grades });
         this.props.data.setGrades(grades);
         this.props.data.saveToLocalStorage(grades)
