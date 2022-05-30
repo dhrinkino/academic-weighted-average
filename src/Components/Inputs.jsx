@@ -10,7 +10,6 @@ class Inputs extends Component {
         cur_grade: '1',
         cur_weight: '0',
        }
-       empty = '';
     componentDidUpdate() {
         // check if props and state are sync, if not pass new grades into state
         if (this.state.grades != this.props.grades) {
@@ -22,7 +21,6 @@ class Inputs extends Component {
         this.setState({ cur_name: e.target.value });
     }
     GradeInputHandler = (e) => {
-        console.log(this.state)
         this.setState({ cur_grade: e.target.value });
     }
     WeightInputHandler = (e) => {
@@ -36,7 +34,7 @@ class Inputs extends Component {
 
     submitHandler = () => {
         if (this.state.cur_name != ''){
-            $("#name_input").val('');
+            this.refs.name_input.value = '';
             var new_id = this.generateFreeID();
             var grades = [...this.state.grades, {'id': new_id, 'name': this.state.cur_name, 'grade': this.state.cur_grade, 'weight': this.state.cur_weight}]
             this.setState({ grades: grades });
@@ -48,7 +46,7 @@ class Inputs extends Component {
     render() { 
         return ( <div>
             <div className="flex justify-center">
-                <input type="text" className="text-center rounded-xl" id="name_input"  onChange={this.NameInputHandler} />
+                <input type="text" className="text-center rounded-xl" ref="name_input"  onChange={this.NameInputHandler} />
                     <select className="rounded-xl" id="grades_input" onChange={this.GradeInputHandler}>
                     <option value='1' default>A</option>
                     <option value='1.5'>B</option>
