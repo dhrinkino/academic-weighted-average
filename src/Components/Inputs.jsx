@@ -62,7 +62,7 @@ class Inputs extends Component {
     
     render() { 
         return ( <div>
-                    <form onSubmit={(event) => {console.log(event)}}>
+                    <form>
                         <div className="flex justify-center">
                             <input type="text" className="text-center rounded-xl" placeholder="Name of course" ref="name_input"  onChange={this.NameInputHandler} />
                                 <select className="rounded-xl" id="grades_input" onChange={this.GradeInputHandler}>
